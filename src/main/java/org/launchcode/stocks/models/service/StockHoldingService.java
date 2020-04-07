@@ -12,7 +12,9 @@ import java.util.List;
 public interface StockHoldingService {
     StockHolding buyShares(User user, String symbol, int numberOfShares, float price) throws StockLookupException;
 
-    void updateShares(StockHolding holding, int numberOfShares, float price) throws StockLookupException;
+    StockHolding sellShares(User user, String symbol, int numberOfShares, float price) throws StockLookupException;
+
+    //void updateShares(StockHolding holding, int numberOfShares, float price) throws StockLookupException;
 
     List<StockHolding> getAllShares(User user);
 

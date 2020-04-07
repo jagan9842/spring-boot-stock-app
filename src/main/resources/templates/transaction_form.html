@@ -11,7 +11,9 @@
     <div id="top" th:include="template :: masthead"></div>
 
     <div id="middle">
-
+        <p class="text-danger">
+            <span th:text="${errorMsg}">ERROR MESSAGE</span>
+        </p>
         <form method="post" th:action="${action}" th:fragment="form">
             <fieldset>
                 <div class="form-group">

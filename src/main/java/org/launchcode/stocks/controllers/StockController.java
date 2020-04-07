@@ -78,14 +78,23 @@ public class StockController extends AbstractController {
     }
 
     @RequestMapping(value = "/sell", method = RequestMethod.POST)
-    public String sell(String symbol, int numberOfShares, HttpServletRequest request, Model model) {
+    public String sell(String symbol, int numberOfShares, float price, HttpServletRequest request, Model model) {
 
-        // TODO - Implement sell action
+        // TODO - Implement buy action
+        User user = getUserFromSession(request);
 
         model.addAttribute("title", "Sell");
         model.addAttribute("action", "/sell");
         model.addAttribute("sellNavClass", "active");
 
+        try {
+            StockHolding stockHolding = stockHoldingService.sellShares(user, symbol, numberOfShares, price);
+            if (stockHolding == null) {
+                model.addAttribute("errorMsg", "No Shares available with the given Symbol");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "transaction_confirm";
     }
 
