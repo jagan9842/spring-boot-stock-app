@@ -80,7 +80,7 @@ public class StockController extends AbstractController {
     @RequestMapping(value = "/sell", method = RequestMethod.POST)
     public String sell(String symbol, int numberOfShares, float price, HttpServletRequest request, Model model) {
 
-        // TODO - Implement buy action
+        // TODO - Implement Sell action
         User user = getUserFromSession(request);
 
         model.addAttribute("title", "Sell");
