@@ -91,6 +91,7 @@ public class StockController extends AbstractController {
             StockHolding stockHolding = stockHoldingService.sellShares(user, symbol, numberOfShares, price);
             if (stockHolding == null) {
                 model.addAttribute("errorMsg", "No Shares available with the given Symbol");
+                return "transaction_form";
             }
         } catch (Exception e) {
             e.printStackTrace();
